@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
@@ -9,5 +11,10 @@ public class Main {
         Balsa Cadiz = new Balsa(1,2);
         Balsa Deimos = new Balsa(1,4);
         Balsa Expedicion = new Balsa(1,8);
-    }
+
+        ArrayList<Pasajero> pasajeros = new ArrayList<>();
+        for (int i = 0; i < 352; i++) {
+            int priority = (int) (Math.random() * 4) + 1;
+            Pasajero pasajero = new Pasajero(i + 1, priority);
+        }    }
 }
