@@ -12,4 +12,8 @@ public class Balsa {
         return capacidad;
     }
 
+    public String getNombre(){
+        return Balsa.class.getName();
+    }
+
 }
