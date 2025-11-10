@@ -13,4 +13,7 @@ public class Barco {
         return !pasajeros.isEmpty();
     }
 
+    public int pasajerosRestantes(){
+        return pasajeros.size();
+    }
 }
