@@ -1,9 +1,14 @@
 public class Rescate implements Runnable{
 
-    public Rescate(){}
+    private Thread rescateHilo =null;
+
+    public Rescate(){
+        rescateHilo =new Thread(this);
+        rescateHilo.start();
+    }
     @Override
     public void run() {
-        while(true){
+        while(!Barco.noHayPasajeros()){
 
         }
     }
