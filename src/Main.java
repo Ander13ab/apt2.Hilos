@@ -6,11 +6,11 @@ public class Main {
     public static void main(String[] args) {
 
         //Completar Codigo
-        Balsa Acasta = new Balsa(1,0.5);
-        Balsa Banff = new Balsa(2,1);
-        Balsa Cadiz = new Balsa(3,2);
-        Balsa Deimos = new Balsa(4,4);
-        Balsa Expedicion = new Balsa(5,8);
+        Balsa b1 = new Balsa("Acasta",1,0.5);
+        Balsa b2 = new Balsa("Banff",2,1);
+        Balsa b3 = new Balsa("Cadiz",3,2);
+        Balsa b4 = new Balsa("Deimos",4,4);
+        Balsa b5 = new Balsa("Expedicion",5,8);
 
         ArrayList<Pasajero> pasajeros = new ArrayList<>();
         for (int i = 0; i < 352; i++) {
