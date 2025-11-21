@@ -5,21 +5,23 @@ public class Balsa {
     private String nombre;
     private int capacidad;
     private double tiempo;
-    ArrayList<Pasajero> pasajerosBalsa = new ArrayList<>();
+    private ArrayList<Pasajero> pasajeros = new ArrayList<>();
+    //private final ArrayListList<Pasajero> pasajeros = new ArrayList<>();
 
     public Balsa(String nombre, int capacidad, double tiempo) {
         this.nombre= nombre;
         this.capacidad = capacidad;
         this.tiempo = tiempo;
-        this.pasajerosBalsa =new ArrayList<Pasajero>();
+        //No se si hay que construirlo v
+        this.pasajeros =new ArrayList<Pasajero>();
     }
 
-    public ArrayList<Pasajero> getPasajerosBalsa() {
-        return pasajerosBalsa;
+    public ArrayList<Pasajero> getPasajeros() {
+        return pasajeros;
     }
 
-    public void setPasajerosBalsa(ArrayList<Pasajero> pasajerosBalsa) {
-        this.pasajerosBalsa = pasajerosBalsa;
+    public void setPasajeros(ArrayList<Pasajero> pasajeros) {
+        this.pasajeros = pasajeros;
     }
 
     public void setNombre(String nombre) {
@@ -46,12 +48,45 @@ public class Balsa {
         return nombre;
     }
 
-    public void agregarPasajeros(){
-        for (int i = 0; i < getCapacidad(); i++) {
-            System.out.println(getNombre());
-            //Añadir pasajeros del barco al arraylist de pasajerosBalsa para mostrarlos
-            System.out.println(pasajerosBalsa.toString());
+    //Lo he cambiado a un boolean para que en el hilo de rescate pueda ver si es true o false
+    public synchronized boolean agregarPasajeros(Pasajero p){
+        if (pasajeros.size()< capacidad){
+            pasajeros.add(p);
+            return true;
         }
+        return false;
     }
 
+
+    //Para saber si la balsa ya está llena
+    public synchronized boolean estaLlena() {
+        return pasajeros.size() == capacidad;
+    }
+    //Hace que el hilo de esa balsa esté en espera el tiempo de rescate que le corresponde
+    public synchronized void descansar() {
+        //no se por que en un try
+        try { Thread.sleep((long) (tiempo * 1000)); } catch (Exception ignored) {}
+    }
+
+    //ChatGPT
+    //Devuelve el sout con la balsa y los pasajeros en ella (no la entiendo del todo)
+    public synchronized void imprimirCarga() {
+        System.out.println("Balsa " + nombre + " llena con " + capacidad + " pasajeros:");
+        for (Pasajero p : pasajeros) {
+            String tipoPers = "";
+            switch (p.getPrioridad()){
+                case 1:
+                    tipoPers = "Niño";
+                case 2:
+                    tipoPers = "Adulto";
+                case 3:
+                    tipoPers = "Anciano";
+                case 4:
+                    tipoPers = "Tripulación";
+            }
+            System.out.println(" - ID " + p.getId() + " ( es un:  " + tipoPers + ")");
+        }
+        pasajeros.clear();
+        System.out.println("--------------------------------");
+    }
 }
