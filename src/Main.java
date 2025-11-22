@@ -13,8 +13,6 @@ public class Main {
         balsas.add(new Balsa("Deimos",4,4));
         balsas.add(new Balsa("Expedicion",5,8));
 
-
-
         ArrayList<Pasajero> pasajeros = new ArrayList<>();
         for (int i = 0; i < 352; i++) {
             int priority = (int) (Math.random() * 4) + 1;
@@ -24,14 +22,7 @@ public class Main {
         //Creo el barco con el array de pasajeros
         new Barco(pasajeros);
 
-
-
-        for (int i = 4; i >0 ; i--) {
-            for (Pasajero pasajero : pasajeros) {
-                if (pasajero.getPrioridad()==i){
-
-                }
-            }
-        }
+        Thread rescate = new Thread(new Rescate(balsas));
+        rescate.start();
     }
 }

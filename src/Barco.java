@@ -9,12 +9,10 @@ public class Barco {
         this.pasajeros.addAll(pasajeros);
     }
 
-    //Agrego synchronized al método
     public  static boolean noHayPasajeros(){
         return pasajeros.isEmpty();
     }
 
-    //Agrego synchronized al método
     public int pasajerosRestantes(){
         return pasajeros.size();
     }

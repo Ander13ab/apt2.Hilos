@@ -3,14 +3,12 @@ import java.util.ArrayList;
 
 public class Rescate implements Runnable{
 
-    //chatGPT
     private final ArrayList<Balsa> balsas;
-    //Cambio el constructpor que tenía por uno nuevo pasando como parámetro el array de balsas
+    //Cambio el constructor que tenía por uno nuevo pasando como parámetro el array de balsas
     public Rescate(ArrayList<Balsa> balsas) {
         this.balsas = balsas;
     }
 
-    //chatGPT
     // Recorre los pasajeros buscando por su prioridad y los elimina, empezando por el 1 -> 4
     public synchronized static Pasajero sacarPorPrioridad() {
         if (Barco.pasajeros.isEmpty())

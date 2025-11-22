@@ -58,7 +58,6 @@ public class Balsa {
     }
 
 
-    //Para saber si la balsa ya está llena
     public synchronized boolean estaLlena() {
         return pasajeros.size() == capacidad;
     }
@@ -68,8 +67,7 @@ public class Balsa {
         try { Thread.sleep((long) (tiempo * 1000)); } catch (Exception ignored) {}
     }
 
-    //ChatGPT
-    //Devuelve el sout con la balsa y los pasajeros en ella (no la entiendo del todo)
+    //Parte del código es con ayuda de ChatGPT
     public synchronized void imprimirCarga() {
         System.out.println("Balsa " + nombre + " llena con " + capacidad + " pasajeros:");
         for (Pasajero p : pasajeros) {
@@ -77,12 +75,16 @@ public class Balsa {
             switch (p.getPrioridad()){
                 case 1:
                     tipoPers = "Niño";
+                    break;
                 case 2:
                     tipoPers = "Adulto";
+                    break;
                 case 3:
                     tipoPers = "Anciano";
+                    break;
                 case 4:
                     tipoPers = "Tripulación";
+                    break;
             }
             System.out.println(" - ID " + p.getId() + " ( es un:  " + tipoPers + ")");
         }
