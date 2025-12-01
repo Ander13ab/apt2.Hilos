@@ -49,7 +49,7 @@ public class Balsa {
     }
 
     //Lo he cambiado a un boolean para que en el hilo de rescate pueda ver si es true o false
-    public synchronized boolean agregarPasajeros(Pasajero p){
+    public boolean agregarPasajeros(Pasajero p){
         if (pasajeros.size()< capacidad){
             pasajeros.add(p);
             return true;
@@ -58,17 +58,17 @@ public class Balsa {
     }
 
 
-    public synchronized boolean estaLlena() {
+    public boolean estaLlena() {
         return pasajeros.size() == capacidad;
     }
     //Hace que el hilo de esa balsa esté en espera el tiempo de rescate que le corresponde
-    public synchronized void descansar() {
+    public void descansar() {
         //no se por que en un try
         try { Thread.sleep((long) (tiempo * 1000)); } catch (Exception ignored) {}
     }
 
     //Parte del código es con ayuda de ChatGPT
-    public synchronized void imprimirCarga() {
+    public void imprimirCarga() {
         System.out.println("Balsa " + nombre + " llena con " + capacidad + " pasajeros:");
         for (Pasajero p : pasajeros) {
             String tipoPers = "";
